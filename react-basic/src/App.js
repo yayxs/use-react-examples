@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MyCart from './MyCart';
+import Father from './components/father';
 class App extends Component {
   state = {
     iptVal: '',
@@ -30,6 +31,8 @@ class App extends Component {
         <input value={this.state.iptVal} onChange={this.valChange}></input>
         <button onClick={this.Add}>点击了按钮</button>
         <MyCart goods={this.state.goods}></MyCart>
+        {/* components/father */}
+        <Father />
       </div>
     );
   }
