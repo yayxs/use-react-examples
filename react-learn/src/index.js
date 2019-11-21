@@ -29,13 +29,13 @@ function Square(props) {
 // }
 // 组件渲染了 9 个方块
 class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true // 默认的第一步棋子
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     squares: Array(9).fill(null),
+  //     xIsNext: true // 默认的第一步棋子
+  //   };
+  // }
   handleClick(i) {
     // 通过使用 .slice() 方法创建了数组的一个副本，而不是直接修改现有的数组
     const squares = this.state.squares.slice();
@@ -48,8 +48,8 @@ class Board extends React.Component {
   renderSquare(i) {
     return (
       <Square
-        value={this.state.squares[i]}
-        onClick={() => this.handleClick(i)}
+        value={this.props.squares[i]}
+        onClick={() => this.props.onClick(i)}
       />
     ); // Board--->Square
   }
@@ -88,14 +88,35 @@ class Board extends React.Component {
 }
 // Game 组件渲染了含有默认值的一个棋盘
 class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      history: [
+        {
+          squares: Array(9).fill(null)
+        }
+      ],
+      xIsNext: true
+    };
+  }
   render() {
+    const history = this.state.history;
+    const current = history[history.length - 1];
+    const winner = calculateWinner(current.squares);
+
+    let status;
+    if (winner) {
+      status = 'Winner: ' + winner;
+    } else {
+      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+    }
     return (
       <div className="game">
         <div className="game-board">
-          <Board />
+          <Board squares={current.squares} onClick={i => this.handleClick(i)} />
         </div>
         <div className="game-info">
-          <div>{/* status */}</div>
+          <div>status</div>
           <ol>{/* TODO */}</ol>
         </div>
       </div>
