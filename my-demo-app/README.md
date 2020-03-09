@@ -1,12 +1,6 @@
-```js
 
-let obj = {
-  name:'yayxs',
-  fav:['chi','he'],
-  firends:[
-    {name:'zs'},{name:'ls'}
-  ]
-}
-let res = Object.assign(obj)
-console.log(res===obj)
-```
+
+ - action
+>数据从应用传到store
+ - js 对象
+ - 
