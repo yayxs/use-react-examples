@@ -1,14 +1,31 @@
-## day-day-up 主题系列仓库之 React.js 进行时
 
-### 文件目录
 
-- react-basic 基本知识点
-- react-learn 井字棋案例
-- movies-search-hooks 基于 hooks 开发电影搜索应用
+## 文件目录
 
-### 更新
+- **react-antd-post-admin**  帖子后台管理 
 
-|       Time       |           主要更新内容            | 其他 |
-| :--------------: | :-------------------------------: | :--: |
-| 2019-11-22 00:25 | 引入 antd 与 Redux 初始化简单列表 | 暂无 |
-| 2019-11-25 23:45 | 引入 antd layout 布局 | 暂无 |
+## 更新记录
+
+
+>
+>
+>**[2020-03-29]** 更新 `master`
+>
+>1. 【优化】重新规范化仓库
+>2. 【增加】增加`react-antd-post-admin` 项目实战
+>3. 【移除】移除`react-basic` 与`react-learn`与`movies-search-hooks`
+>4. 【移除】移除`redux-demo ` 学习redux的笔记
+>
+>-----
+>
+>
+>
+>**[2019-11-22]** 更新 `master`
+>
+>1. 【优化】引入 antd 与 Redux 初始化简单列表
+>
+>------
+>
+>**[2019-11-25]** 更新 `master分支`
+>
+>1. 【增加】引入 antd layout 布局
