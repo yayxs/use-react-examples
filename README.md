@@ -3,10 +3,17 @@
 ## 文件目录
 
 - **react-antd-post-admin**  帖子后台管理 
+- **reactNativeDemo**  每天写一点react-native
 
 ## 更新记录
 
 
+>**[2020-04-02]** 
+>
+>1. 【增加】增加`reactNativeDemo`  rn学习进行时
+>
+>---
+>
 >
 >
 >**[2020-03-29]** 更新 `master`
