@@ -1,14 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Button } from 'antd';
-import './App.css';
+import React from "react";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import Login from "./pages/Login";
 
-function App() {
+const App = () => {
+  // </React.StrictMode>,
   return (
-    <div className="App">
-      <Button type="primary">anniu</Button>
-    </div>
+    <>
+      <Router>
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
-}
-
+};
 export default App;
