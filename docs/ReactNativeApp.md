@@ -107,6 +107,18 @@ const App = () => (
 );
 export default App;
 ```
+## 三、实用API
+
+```js
+import { KeyboardAvoidingView } from 'react-native';
+
+<KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+  ... 在这里放置需要根据键盘调整位置的组件 ...
+</KeyboardAvoidingView>
+```
+
+本组件用于解决一个常见的尴尬问题：手机上弹出的键盘常常会挡住当前的视图。本组件可以自动根据键盘的位置，调整自身的 height 或底部的 padding，以避免被遮挡。
+
 ## 三、实际开发
 
 ### 1. 登陆注册页
@@ -143,3 +155,32 @@ module.exports = {
 };
 
 ```
+
+### 2. 常见设置
+
+- independent={true}
+
+
+
+### 3. js方法
+
+可以用来动态的生成`Tab.Screen`
+
+```js
+let obj = {
+  FirstPage: {
+    screen: 'one',
+  },
+  SecPage: {
+    screen: 'two',
+  }
+}
+
+let resArr = Object.entries(obj)
+console.log(resArr)
+resArr.map(item=>{
+  console.log(item[0])
+  console.log(item[1])
+})
+```
+
