@@ -1,19 +1,30 @@
 import React from "react";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import Login from "./pages/Login";
+import { Switch, Route, Redirect } from "react-router-dom";
 
-const App = () => {
-  // </React.StrictMode>,
+import { asyncRoutes } from "./routes/index";
+
+import BasicLayout from "./layouts/BasicLayout";
+
+export default function App() {
   return (
-    <>
-      <Router>
+    <div>
+      <BasicLayout>
         <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
+          {asyncRoutes.map((item) => {
+            return (
+              <Route
+                exact={item.exact}
+                key={item.path}
+                path={item.path}
+                render={(props) => {
+                  return <item.component {...props} />;
+                }}
+              ></Route>
+            );
+          })}
+          <Redirect to="/404" />
         </Switch>
-      </Router>
-    </>
+      </BasicLayout>
+    </div>
   );
-};
-export default App;
+}

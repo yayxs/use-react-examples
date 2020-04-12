@@ -35,4 +35,4 @@ function Login(props) {
   );
 }
 
-export default React.memo(Login);
+export default Login
