@@ -5,7 +5,7 @@ export default class CounterDemoPage extends Component {
   render() {
     return (
       <View>
-        <Text> 计数器 </Text>
+        <Text>测试页面</Text>
       </View>
     );
   }

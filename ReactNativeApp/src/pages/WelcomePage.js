@@ -1,16 +1,26 @@
 import React, {Component} from 'react';
-import {Text, View, Button} from 'react-native';
-
+import SplashScreen from 'react-native-splash-screen';
+import NavigationUtil from '../navigation/NavigationUtil';
 export default class WelcomePage extends Component {
-  handleClick = () => {
-    console.log('点击了按钮');
-  };
+  componentDidMount() {
+    // 设置定时器跳转到首页
+    this.timerId = setTimeout(() => {
+      // 隐藏启动页
+      SplashScreen.hide();
+      // 重置到首页
+      const {navigation} = this.props;
+      console.log(navigation);
+      const options = {
+        navigation,
+        name: 'ChoosePage',
+      };
+      NavigationUtil.replace(options);
+    }, 200);
+  }
+  componentWillUnmount() {
+    this.timerId && clearTimeout(this.timerId);
+  }
   render() {
-    return (
-      <View>
-        <Text> 欢迎 </Text>
-        <Button title="按钮" onPress={this.handleClick} />
-      </View>
-    );
+    return null;
   }
 }

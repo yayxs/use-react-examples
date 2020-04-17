@@ -125,6 +125,8 @@ import { KeyboardAvoidingView } from 'react-native';
 
 ### 2. 底部tabar
 
+### 3. 网络请求
+
 
 
 
@@ -183,4 +185,14 @@ resArr.map(item=>{
   console.log(item[1])
 })
 ```
+
+---------------------------------
+
+- 算法相关
+
+
+
+
+
+
 

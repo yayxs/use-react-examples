@@ -8,6 +8,7 @@ import {
 
 import {Button, Block, Input, Text} from '../componenets';
 import {theme} from '../constants';
+import RequestUtils from '../utils/request';
 // 定义验证的用户名和密码
 const VALID_USERNAME = 'admin';
 const VALID_PASSWORD = '123456';
@@ -24,13 +25,32 @@ export default class LoginPage extends Component {
     console.log('忘记密码');
   };
   // 登录
-  handleLogin = () => {
-    console.log('点击了登录');
-    console.log(this.state.username);
-    console.log(this.state.password);
+  handleLogin = async () => {
+    try {
+      let response = await fetch(
+        'http://rap2.taobao.org:38080/app/mock/236864/api/v1/login',
+        {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: 'admin',
+            password: '123456',
+          }),
+        },
+      );
+      let json = await response.json();
+      // 登录成功跳转页面
+      const {navigation} = this.props;
+      navigation.push('');
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   render() {
-    const {navigation} = this.props;
     const {loading, errors, username, password} = this.state;
     const hasErrors = (key) => (errors.includes(key) ? styles.hasErrors : null);
 
