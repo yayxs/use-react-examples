@@ -2,7 +2,7 @@ import axios from "axios";
 import {} from "./auth";
 // 创建实例
 const instance = axios.create({
-  baseURL: "https://localhost:3000",
+  baseURL: "http://localhost:3000",
   timeout: 5000,
 });
 
