@@ -119,7 +119,73 @@ import { KeyboardAvoidingView } from 'react-native';
 
 本组件用于解决一个常见的尴尬问题：手机上弹出的键盘常常会挡住当前的视图。本组件可以自动根据键盘的位置，调整自身的 height 或底部的 padding，以避免被遮挡。
 
+## 三、React Hook
+
+### 特点
+
+- **完全可选的。**
+- **100% 向后兼容的。**
+- **现在可用。**
+
+### hooks 概览
+
+#### State Hook
+
+
+
 ## 三、实际开发
+
+### 通用路由的封装
+
+
+
+### 1. 欢迎页
+
+```js
+ componentDidMount() {
+    // 设置定时器跳转到选择登陆页还是注册页
+    this.timerId = setTimeout(() => {
+      // 隐藏启动页
+      SplashScreen.hide();
+      // 重置到首页
+      const {navigation} = this.props;
+      const options = {
+        navigation,
+        name: 'ChoosePage',
+      };
+      NavigationUtil.replace(options);
+    }, 200);
+  }
+  componentWillUnmount() {
+    this.timerId && clearTimeout(this.timerId);
+  }
+```
+
+> 组件常常在 `componentDidMount` 和 `componentDidUpdate` 中获取数据。但是，同一个 `componentDidMount` 中可能也包含很多其它的逻辑，如设置事件监听，而之后需在 `componentWillUnmount` 中清除。相互关联且需要对照修改的代码被进行了拆分，而完全不相关的代码却在同一个方法中组合在一起。如此很容易产生 bug，并且导致逻辑不一致。
+
+在这里我们便是在 ``componentDidMount`` 设置定时器，在 `componentWillUnmount` 清除定时器 ，这本是为了处理同一业务逻辑
+
+**Hook 将组件中相互关联的部分拆分成更小的函数（比如设置订阅或请求数据）**
+
+```js
+const WelcomePage = (props) => {
+  const {navigation} = props;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      SplashScreen.hide();
+      NavigationUtil.replace({
+        navigation,
+        name: 'ChoosePage',
+      });
+    }, 200);
+    return () => clearTimeout(timer);
+  }, []);
+  return null;
+};
+export default WelcomePage;
+```
+
+
 
 ### 1. 登陆注册页
 
