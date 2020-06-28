@@ -1,16 +1,27 @@
+import React, { useEffect, useState } from "react";
 
-import React from 'react'
-import { useState, useEffect } from 'react';
-function Counter() {
-  const [count, setCount] = useState(0);
-
+const Counter = () => {
+  let [count, setCount] = useState(0);
   useEffect(() => {
     const id = setInterval(() => {
+      console.log(123);
       setCount(count + 1);
     }, 1000);
     return () => clearInterval(id);
-  }, [count]);
+  });
+  return (
+    <div>
+      <h1>{count}</h1>
+    </div>
+  );
+};
 
-  return <h1>{count}</h1>;
+export default function App() {
+  const [show,setShow] = useState(true)
+  return (
+    <>
+    {show? <Counter></Counter>:null}
+     <button onClick={()=>setShow(!show) }>anniu</button>
+    </>
+  );
 }
-export default Counter
